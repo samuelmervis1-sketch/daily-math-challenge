@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Daily Math Challenge</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      background-color: #fffef8;
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          transparent,
+          transparent 31px,
+          #b0c4de 31px,
+          #b0c4de 32px
+        ),
+        linear-gradient(
+          to right,
+          transparent 79px,
+          #e74c3c 79px,
+          #e74c3c 81px,
+          transparent 81px
+        );
+      min-height: 100vh;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px 20px 100px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 254, 248, 0.95);
+      backdrop-filter: blur(4px);
+      border-bottom: 2px solid #b0c4de;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #2c3e50;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #3498db;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 16px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .nav-icons span {
+      transition: transform 0.2s;
+    }
+
+    .nav-icons span:hover {
+      transform: scale(1.2);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 40px 80px 100px;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      color: #1a252f;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      padding: 18px 48px;
+      border-radius: 12px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(52, 152, 219, 0.4);
+      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #2176ae;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+    }
+
+    /* TRACKS SECTION */
+    .tracks {
+      padding: 40px 40px 80px 100px;
+    }
+
+    .tracks h2 {
+      font-size: 1.6rem;
+      margin-bottom: 32px;
+      color: #1a252f;
+    }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-standard {
+      background-color: #f0fff4;
+      border: 3px dashed #27ae60;
+    }
+
+    .card-advanced {
+      background-color: #fffbf0;
+      border: 3px dashed #f39c12;
+    }
+
+    .card-hard {
+      background-color: #fff5f5;
+      border: 3px dashed #e74c3c;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #1a252f;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      color: #777;
+      font-style: italic;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      /* Navigation */
+      nav {
+        padding: 12px 16px;
+        flex-wrap: nowrap;
+        gap: 8px;
+        justify-content: space-between;
+      }
+
+      .nav-logo { font-size: 1rem; }
+
+      .nav-links { display: none; }
+
+      .nav-icons {
+        gap: 12px;
+        font-size: 1.4rem;
+      }
+
+      .nav-icons span {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 48px 20px 40px 20px;
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        line-height: 1.25;
+        margin-bottom: 16px;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+        margin-bottom: 28px;
+      }
+
+      .btn-primary {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 18px 20px;
+        min-height: 50px;
+        font-size: 1rem;
+      }
+
+      /* Tracks */
+      .tracks {
+        padding: 32px 20px 60px 20px;
+      }
+
+      .tracks h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+
+      .tracks-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      .card-icon { font-size: 2rem; margin-bottom: 12px; }
+      .card h3   { font-size: 1.15rem; }
+      .card p    { font-size: 0.9rem; }
+    }
+
+    /* Remove hover lifts on touch devices */
+    @media (hover: none) {
+      .btn-primary:hover { transform: none; background-color: #3498db; box-shadow: 0 4px 14px rgba(52,152,219,0.4); }
+      .card:hover        { transform: none; box-shadow: none; }
+      .nav-icons span:hover { transform: none; }
+
+      .btn-primary:active { opacity: 0.85; }
+      .card:active        { opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Daily Math Challenge</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Practice</a></li>
+      <li><a href="#">Premium</a></li>
+    </ul>
+    <div class="nav-icons">
+      <span title="Account">👤</span>
+      <span title="Toggle theme">🌙</span>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Practice math. Get better. Every day.</h1>
+    <p>10 minutes. Three difficulty levels. Real progress.</p>
+    <button class="btn-primary">Start practicing free</button>
+  </section>
+
+  <section class="tracks">
+    <h2>Choose your track</h2>
+    <div class="tracks-grid">
+
+      <div class="card card-standard">
+        <div class="card-icon">📗</div>
+        <h3>Standard</h3>
+        <p>High school level (Year 10–12). Quadratics, trig, functions, basic calculus.</p>
+        <div class="card-meta">Solve time: 3–5 minutes</div>
+      </div>
+
+      <div class="card card-advanced">
+        <div class="card-icon">📙</div>
+        <h3>Advanced</h3>
+        <p>High school extension level. Complex calculus, 3D geometry, advanced algebra.</p>
+        <div class="card-meta">Solve time: 5–8 minutes</div>
+      </div>
+
+      <div class="card card-hard">
+        <div class="card-icon">📕</div>
+        <h3>Hard</h3>
+        <p>University level. Abstract algebra, real analysis, difficult polynomial theory.</p>
+        <div class="card-meta">Solve time: 10–15 minutes</div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

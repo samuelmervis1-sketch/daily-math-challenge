@@ -1,0 +1,598 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 [\
+  \{\
+    "id": 31,\
+    "track": "advanced",\
+    "topic": "Integration",\
+    "problem": "Evaluate: \uc0\u8747 \u8320 ^(\u960 /2) sin\'b2(x) dx",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "\uc0\u960 /4",\
+    "acceptedFormats": ["\uc0\u960 /4", "pi/4", "0.785"],\
+    "solution": [\
+      "Use the power reduction identity: sin\'b2(x) = (1 - cos(2x)) / 2",\
+      "Rewrite the integral: \uc0\u8747 \u8320 ^(\u960 /2) (1 - cos(2x)) / 2 dx",\
+      "Integrate term by term: [x/2 - sin(2x)/4]\uc0\u8320 ^(\u960 /2)",\
+      "Evaluate at upper bound: \uc0\u960 /4 - sin(\u960 )/4 = \u960 /4 - 0 = \u960 /4",\
+      "Lower bound gives 0, so the answer is \uc0\u960 /4"\
+    ],\
+    "hint1": "Use a trig identity to rewrite sin\'b2(x) as something easier to integrate",\
+    "hint2": "The power reduction formula sin\'b2(x) = (1 - cos(2x))/2 removes the square"\
+  \},\
+  \{\
+    "id": 32,\
+    "track": "advanced",\
+    "topic": "Integration",\
+    "problem": "Evaluate: \uc0\u8747 \u8320 ^1 x\'b7e\u739  dx",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "1",\
+    "acceptedFormats": ["1", "1.0"],\
+    "solution": [\
+      "Use integration by parts: let u = x and dv = e\uc0\u739  dx",\
+      "Then du = dx and v = e\uc0\u739 ",\
+      "Apply \uc0\u8747 u dv = uv - \u8747 v du: [xe\u739 ]\u8320 ^1 - \u8747 \u8320 ^1 e\u739  dx",\
+      "Evaluate boundary term: (1\'b7e - 0) = e",\
+      "Subtract \uc0\u8747 \u8320 ^1 e\u739  dx = [e\u739 ]\u8320 ^1 = e - 1. Answer: e - (e - 1) = 1"\
+    ],\
+    "hint1": "Integration by parts works well here \'97 let u be the polynomial factor",\
+    "hint2": "Let u = x and dv = e\uc0\u739  dx, so du = dx and v = e\u739 "\
+  \},\
+  \{\
+    "id": 33,\
+    "track": "advanced",\
+    "topic": "Integration",\
+    "problem": "Evaluate: \uc0\u8747 \u8320 ^1 1 / ((x + 1)(x + 2)) dx",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "ln(4/3)",\
+    "acceptedFormats": ["ln(4/3)", "log(4/3)", "ln 4/3", "0.288"],\
+    "solution": [\
+      "Decompose: 1/((x+1)(x+2)) = A/(x+1) + B/(x+2). Multiply through to get 1 = A(x+2) + B(x+1)",\
+      "Set x = -1: A = 1. Set x = -2: B = -1",\
+      "Integral becomes: \uc0\u8747 \u8320 ^1 (1/(x+1) - 1/(x+2)) dx",\
+      "Integrate: [ln(x+1) - ln(x+2)]\uc0\u8320 ^1 = [ln((x+1)/(x+2))]\u8320 ^1",\
+      "Evaluate: ln(2/3) - ln(1/2) = ln(2/3 \'f7 1/2) = ln(4/3)"\
+    ],\
+    "hint1": "Decompose the integrand into partial fractions before integrating",\
+    "hint2": "After decomposing, you'll integrate 1/(x+1) - 1/(x+2); evaluate carefully at both bounds"\
+  \},\
+  \{\
+    "id": 34,\
+    "track": "advanced",\
+    "topic": "Integration",\
+    "problem": "Evaluate: \uc0\u8747 \u8320 ^\u960  x\'b7sin(x) dx",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "\uc0\u960 ",\
+    "acceptedFormats": ["\uc0\u960 ", "pi", "3.14159", "3.142"],\
+    "solution": [\
+      "Use integration by parts: let u = x and dv = sin(x) dx",\
+      "Then du = dx and v = -cos(x)",\
+      "Apply the formula: [-x\'b7cos(x)]\uc0\u8320 ^\u960  + \u8747 \u8320 ^\u960  cos(x) dx",\
+      "Boundary term: -\uc0\u960 \'b7cos(\u960 ) + 0 = -\u960 \'b7(-1) = \u960 ",\
+      "Add \uc0\u8747 \u8320 ^\u960  cos(x) dx = [sin(x)]\u8320 ^\u960  = 0. Final answer: \u960 "\
+    ],\
+    "hint1": "Use integration by parts with u = x (the polynomial factor)",\
+    "hint2": "The boundary term -\uc0\u960 \'b7cos(\u960 ) simplifies nicely since cos(\u960 ) = -1"\
+  \},\
+  \{\
+    "id": 35,\
+    "track": "advanced",\
+    "topic": "Integration",\
+    "problem": "Evaluate: \uc0\u8747 \u8320 ^\u8730 3 x\'b7\u8730 (x\'b2 + 1) dx",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "7/3",\
+    "acceptedFormats": ["7/3", "2.333", "2.33"],\
+    "solution": [\
+      "Use substitution: let u = x\'b2 + 1, so du = 2x dx, meaning x dx = du/2",\
+      "Change limits: x = 0 \uc0\u8594  u = 1; x = \u8730 3 \u8594  u = 4",\
+      "The integral becomes: (1/2) \uc0\u8747 \u8321 ^4 \u8730 u du = (1/2) \u8747 \u8321 ^4 u^(1/2) du",\
+      "Integrate: (1/2) \'b7 [2u^(3/2)/3]\uc0\u8321 ^4 = (1/3)[u^(3/2)]\u8321 ^4",\
+      "Evaluate: (1/3)(4^(3/2) - 1) = (1/3)(8 - 1) = 7/3"\
+    ],\
+    "hint1": "Look for a substitution that simplifies the integrand \'97 the x outside the root is a clue",\
+    "hint2": "Let u = x\'b2 + 1 so that du = 2x dx; the x dx factor becomes du/2"\
+  \},\
+  \{\
+    "id": 36,\
+    "track": "advanced",\
+    "topic": "Integration",\
+    "problem": "Evaluate: \uc0\u8747 \u8320 ^(\u960 /2) sin\'b3(x)\'b7cos\'b2(x) dx",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "2/15",\
+    "acceptedFormats": ["2/15", "0.133", "0.1333"],\
+    "solution": [\
+      "Rewrite: sin\'b3(x) = sin(x)\'b7(1 - cos\'b2(x)), saving one sin(x) for the substitution",\
+      "Let u = cos(x), so du = -sin(x) dx; limits: x=0 \uc0\u8594  u=1, x=\u960 /2 \u8594  u=0",\
+      "Integral becomes: \uc0\u8747 \u8321 ^0 (1 - u\'b2)\'b7u\'b2\'b7(-du) = \u8747 \u8320 ^1 (u\'b2 - u\u8308 ) du",\
+      "Integrate: [u\'b3/3 - u\uc0\u8309 /5]\u8320 ^1",\
+      "Evaluate: 1/3 - 1/5 = 5/15 - 3/15 = 2/15"\
+    ],\
+    "hint1": "Split off one sin(x) factor to pair with dx for a substitution",\
+    "hint2": "Let u = cos(x) and use sin\'b2(x) = 1 - u\'b2 \'97 the integral becomes a simple polynomial in u"\
+  \},\
+  \{\
+    "id": 37,\
+    "track": "advanced",\
+    "topic": "Differential Equations",\
+    "problem": "Solve the separable ODE: dy/dx = 2xy, given y(0) = 3.",\
+    "inputType": "expression",\
+    "variables": ["y"],\
+    "answer": "y = 3e^(x\'b2)",\
+    "acceptedFormats": ["y = 3e^(x\'b2)", "y = 3e^(x^2)", "3e^(x\'b2)", "3e^(x^2)"],\
+    "solution": [\
+      "Separate variables: dy/y = 2x dx",\
+      "Integrate both sides: ln|y| = x\'b2 + C",\
+      "Exponentiate: y = Ae^(x\'b2) where A is a constant",\
+      "Apply the initial condition y(0) = 3: A\'b7e\uc0\u8304  = A = 3",\
+      "Particular solution: y = 3e^(x\'b2)"\
+    ],\
+    "hint1": "Separate variables by moving all y terms to one side and all x terms to the other",\
+    "hint2": "After integrating, you get ln|y| = x\'b2 + C \'97 exponentiate both sides to find y"\
+  \},\
+  \{\
+    "id": 38,\
+    "track": "advanced",\
+    "topic": "Differential Equations",\
+    "problem": "Solve the first-order linear ODE: dy/dx + y = e\uc0\u739 , with y(0) = 1.",\
+    "inputType": "expression",\
+    "variables": ["y"],\
+    "answer": "y = (e\uc0\u739  + e^(-x)) / 2",\
+    "acceptedFormats": ["y = (e\uc0\u739  + e^(-x)) / 2", "(e^x + e^(-x))/2", "y = cosh(x)", "cosh(x)"],\
+    "solution": [\
+      "Identify P(x) = 1; the integrating factor is \uc0\u956  = e^(\u8747 1 dx) = e\u739 ",\
+      "Multiply through by e\uc0\u739 : d/dx[y\'b7e\u739 ] = e^(2x)",\
+      "Integrate both sides: y\'b7e\uc0\u739  = e^(2x)/2 + C",\
+      "Divide by e\uc0\u739 : y = e\u739 /2 + Ce^(-x)",\
+      "Apply y(0) = 1: 1/2 + C = 1, so C = 1/2. Therefore y = (e\uc0\u739  + e^(-x))/2"\
+    ],\
+    "hint1": "This is in the standard form dy/dx + P(x)y = Q(x) \'97 find the integrating factor \uc0\u956  = e^(\u8747 P dx)",\
+    "hint2": "The integrating factor is e\uc0\u739 ; multiplying through makes the left side d/dx[ye\u739 ]"\
+  \},\
+  \{\
+    "id": 39,\
+    "track": "advanced",\
+    "topic": "Differential Equations",\
+    "problem": "A population grows proportionally to its size. If P(0) = 500 and P(3) = 2000, find P(6).",\
+    "inputType": "single",\
+    "variables": ["P"],\
+    "answer": "8000",\
+    "acceptedFormats": ["8000", "P(6) = 8000"],\
+    "solution": [\
+      "The model is dP/dt = kP, giving the solution P(t) = 500\'b7e^(kt)",\
+      "Apply P(3) = 2000: 500\'b7e^(3k) = 2000, so e^(3k) = 4",\
+      "The population quadruples every 3 time units",\
+      "P(6) = P(3) \'d7 4 = 2000 \'d7 4 = 8000",\
+      "Alternatively: P(6) = 500\'b7(e^(3k))\'b2 = 500 \'d7 16 = 8000"\
+    ],\
+    "hint1": "Write the exponential model P = 500e^(kt) and use P(3) = 2000 to find the growth factor",\
+    "hint2": "Since e^(3k) = 4, the population quadruples every 3 units \'97 so P(6) = P(3) \'d7 4"\
+  \},\
+  \{\
+    "id": 40,\
+    "track": "advanced",\
+    "topic": "Differential Equations",\
+    "problem": "Solve: dy/dx = (y + 1)/(x + 1), with y(0) = 1.",\
+    "inputType": "expression",\
+    "variables": ["y"],\
+    "answer": "y = 2x + 1",\
+    "acceptedFormats": ["y = 2x + 1", "2x + 1", "y = 2(x + 1) - 1"],\
+    "solution": [\
+      "Separate variables: dy/(y + 1) = dx/(x + 1)",\
+      "Integrate both sides: ln|y + 1| = ln|x + 1| + C",\
+      "Exponentiate: y + 1 = A(x + 1) where A = e^C",\
+      "Apply y(0) = 1: 1 + 1 = A(0 + 1), so A = 2",\
+      "Therefore y + 1 = 2(x + 1), giving y = 2x + 1"\
+    ],\
+    "hint1": "Separate variables \'97 both sides integrate to logarithm expressions",\
+    "hint2": "After integrating you get y + 1 = A(x + 1); use y(0) = 1 to find A = 2"\
+  \},\
+  \{\
+    "id": 41,\
+    "track": "advanced",\
+    "topic": "Differential Equations",\
+    "problem": "Solve: x\'b7dy/dx + y = x\'b2, with y(3) = 4.",\
+    "inputType": "expression",\
+    "variables": ["y"],\
+    "answer": "y = x\'b2/3 + 3/x",\
+    "acceptedFormats": ["y = x\'b2/3 + 3/x", "x^2/3 + 3/x", "y = x^2/3 + 3/x"],\
+    "solution": [\
+      "Divide by x to get standard form: dy/dx + y/x = x",\
+      "Integrating factor: \uc0\u956  = e^(\u8747 1/x dx) = e^(ln x) = x",\
+      "Multiply through by x: d/dx[xy] = x\'b2",\
+      "Integrate: xy = x\'b3/3 + C, so y = x\'b2/3 + C/x",\
+      "Apply y(3) = 4: 9/3 + C/3 = 4 \uc0\u8594  C = 3. Therefore y = x\'b2/3 + 3/x"\
+    ],\
+    "hint1": "Divide both sides by x to get the standard linear form, then find the integrating factor",\
+    "hint2": "The integrating factor is x; after multiplying, the left side becomes d/dx[xy]"\
+  \},\
+  \{\
+    "id": 42,\
+    "track": "advanced",\
+    "topic": "Differential Equations",\
+    "problem": "Newton's Law of Cooling: dT/dt = -k(T - 20). A body cools from 100\'b0C to 60\'b0C in 5 minutes. Find the temperature after 10 minutes.",\
+    "inputType": "single",\
+    "variables": ["T"],\
+    "answer": "40\'b0C",\
+    "acceptedFormats": ["40\'b0C", "40", "T = 40"],\
+    "solution": [\
+      "General solution: T - 20 = Ae^(-kt). At t = 0, T = 100, so A = 80",\
+      "Apply T(5) = 60: 40 = 80\'b7e^(-5k), giving e^(-5k) = 1/2",\
+      "The excess temperature halves every 5 minutes",\
+      "At t = 10: T - 20 = 80\'b7(e^(-5k))\'b2 = 80\'b7(1/2)\'b2 = 80/4 = 20",\
+      "Therefore T(10) = 20 + 20 = 40\'b0C"\
+    ],\
+    "hint1": "Write T - 20 = Ae^(-kt) and use T(0) = 100 to find A = 80",\
+    "hint2": "From T(5) = 60 you get e^(-5k) = 1/2; use this squared to find T(10) without computing k"\
+  \},\
+  \{\
+    "id": 43,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "Find the determinant of A = [[3, 2], [1, 4]].",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "10",\
+    "acceptedFormats": ["10", "det(A) = 10"],\
+    "solution": [\
+      "For a 2\'d72 matrix [[a, b], [c, d]], the determinant is ad - bc",\
+      "Identify: a = 3, b = 2, c = 1, d = 4",\
+      "Calculate: det(A) = (3)(4) - (2)(1)",\
+      "= 12 - 2",\
+      "= 10"\
+    ],\
+    "hint1": "For a 2\'d72 matrix: det = (main diagonal product) - (anti-diagonal product)",\
+    "hint2": "det([[3,2],[1,4]]) = 3\'b74 - 2\'b71"\
+  \},\
+  \{\
+    "id": 44,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "Use Cramer's Rule to solve the system: 3x + 2y = 8 and x + 4y = 6.",\
+    "inputType": "single",\
+    "variables": ["x", "y"],\
+    "answer": "x = 2, y = 1",\
+    "acceptedFormats": ["x = 2, y = 1", "x=2, y=1", "(2, 1)"],\
+    "solution": [\
+      "Set up the coefficient matrix A = [[3,2],[1,4]]; det(A) = 12 - 2 = 10",\
+      "For x: replace the x-column with constants \uc0\u8594  det([[8,2],[6,4]]) = 32 - 12 = 20",\
+      "x = det_x / det(A) = 20/10 = 2",\
+      "For y: replace the y-column with constants \uc0\u8594  det([[3,8],[1,6]]) = 18 - 8 = 10",\
+      "y = det_y / det(A) = 10/10 = 1. Solution: x = 2, y = 1"\
+    ],\
+    "hint1": "Cramer's Rule: x = det(A\uc0\u8339 )/det(A) where A\u8339  replaces the x-column with the constants vector",\
+    "hint2": "First compute det(A) = 10, then build A\uc0\u8339  and A_y by substituting the right-hand side values"\
+  \},\
+  \{\
+    "id": 45,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "Find the eigenvalues of A = [[4, 1], [2, 3]].",\
+    "inputType": "multiple",\
+    "variables": ["\uc0\u955 "],\
+    "answer": "\uc0\u955  = 2, 5",\
+    "acceptedFormats": ["\uc0\u955  = 2, 5", "\u955  = 5, 2", "2, 5", "5, 2", "\u955  = 2 and \u955  = 5"],\
+    "solution": [\
+      "Set up the characteristic equation: det(A - \uc0\u955 I) = 0",\
+      "det([[4-\uc0\u955 , 1],[2, 3-\u955 ]]) = (4-\u955 )(3-\u955 ) - 2 = 0",\
+      "Expand: \uc0\u955 \'b2 - 7\u955  + 12 - 2 = \u955 \'b2 - 7\u955  + 10 = 0",\
+      "Factor: (\uc0\u955  - 2)(\u955  - 5) = 0",\
+      "Eigenvalues: \uc0\u955  = 2 and \u955  = 5"\
+    ],\
+    "hint1": "Eigenvalues come from det(A - \uc0\u955 I) = 0 \'97 subtract \u955  from each main diagonal entry",\
+    "hint2": "Expanding gives \uc0\u955 \'b2 - 7\u955  + 10 = 0; factor this quadratic"\
+  \},\
+  \{\
+    "id": 46,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "If A = [[2, 1], [0, 3]], find det(A\'b3).",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "216",\
+    "acceptedFormats": ["216"],\
+    "solution": [\
+      "Use the multiplicative property of determinants: det(A\uc0\u8319 ) = det(A)\u8319 ",\
+      "Calculate det(A) = (2)(3) - (1)(0) = 6",\
+      "Apply the property: det(A\'b3) = det(A)\'b3 = 6\'b3",\
+      "Calculate: 6\'b3 = 6 \'d7 6 \'d7 6 = 216",\
+      "Therefore det(A\'b3) = 216"\
+    ],\
+    "hint1": "Use the key identity det(AB) = det(A)\'b7det(B), which extends to det(A\uc0\u8319 ) = det(A)\u8319 ",\
+    "hint2": "Find det(A) first (a simple 2\'d72), then raise it to the third power"\
+  \},\
+  \{\
+    "id": 47,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "Given A = [[1, 2], [3, 4]] and B = [[0, 1], [1, 0]], find det(AB).",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "2",\
+    "acceptedFormats": ["2"],\
+    "solution": [\
+      "Use the property det(AB) = det(A) \'b7 det(B) \'97 no need to multiply the matrices",\
+      "Calculate det(A) = (1)(4) - (2)(3) = 4 - 6 = -2",\
+      "Calculate det(B) = (0)(0) - (1)(1) = -1",\
+      "Apply: det(AB) = (-2)(-1) = 2",\
+      "Therefore det(AB) = 2"\
+    ],\
+    "hint1": "The determinant is multiplicative: det(AB) = det(A)\'b7det(B)",\
+    "hint2": "Compute each 2\'d72 determinant separately, then multiply the results"\
+  \},\
+  \{\
+    "id": 48,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "Find the determinant of A = [[1, 2, 3], [0, 1, 4], [5, 6, 0]].",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "1",\
+    "acceptedFormats": ["1"],\
+    "solution": [\
+      "Expand along the first column (the zero in row 2 saves computation)",\
+      "det = 1\'b7det([[1,4],[6,0]]) - 0\'b7(anything) + 5\'b7det([[2,3],[1,4]])",\
+      "First minor: det([[1,4],[6,0]]) = 0 - 24 = -24",\
+      "Third minor: det([[2,3],[1,4]]) = 8 - 3 = 5",\
+      "det(A) = 1(-24) + 5(5) = -24 + 25 = 1"\
+    ],\
+    "hint1": "Expand along the first column \'97 the zero in position (2,1) eliminates one of the three\
+Here are the remaining puzzles to complete the array. Append these starting from id 48 (replace the incomplete one):\
+\
+  \{\
+    "id": 48,\
+    "track": "advanced",\
+    "topic": "Matrices",\
+    "problem": "Find the determinant of A = [[1, 2, 3], [0, 1, 4], [5, 6, 0]].",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "1",\
+    "acceptedFormats": ["1"],\
+    "solution": [\
+      "Expand along the first column \'97 the zero in row 2 eliminates one term",\
+      "det = 1\'b7det([[1,4],[6,0]]) - 0 + 5\'b7det([[2,3],[1,4]])",\
+      "First minor: det([[1,4],[6,0]]) = (1)(0) - (4)(6) = -24",\
+      "Third minor: det([[2,3],[1,4]]) = (2)(4) - (3)(1) = 5",\
+      "det(A) = 1(-24) + 5(5) = -24 + 25 = 1"\
+    ],\
+    "hint1": "Expand along the first column \'97 the zero in position (2,1) means that term vanishes",\
+    "hint2": "You only need two 2\'d72 minors: det([[1,4],[6,0]]) and det([[2,3],[1,4]])"\
+  \},\
+  \{\
+    "id": 49,\
+    "track": "advanced",\
+    "topic": "Vectors",\
+    "problem": "Given a = (2, 1, 3) and b = (1, -1, 2), find a \'b7 b.",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "7",\
+    "acceptedFormats": ["7"],\
+    "solution": [\
+      "The dot product is a \'b7 b = a\uc0\u8321 b\u8321  + a\u8322 b\u8322  + a\u8323 b\u8323 ",\
+      "Substitute the components: (2)(1) + (1)(-1) + (3)(2)",\
+      "= 2 - 1 + 6",\
+      "= 7",\
+      "Therefore a \'b7 b = 7"\
+    ],\
+    "hint1": "Multiply corresponding components and sum the results",\
+    "hint2": "a \'b7 b = (2)(1) + (1)(-1) + (3)(2) \'97 compute each product then add"\
+  \},\
+  \{\
+    "id": 50,\
+    "track": "advanced",\
+    "topic": "Vectors",\
+    "problem": "Find the cross product a \'d7 b where a = (1, 0, 1) and b = (0, 1, 1).",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "(-1, -1, 1)",\
+    "acceptedFormats": ["(-1, -1, 1)", "(-1,-1,1)", "-i - j + k"],\
+    "solution": [\
+      "Use the determinant formula with i, j, k in the first row",\
+      "i-component: (0)(1) - (1)(1) = -1",\
+      "j-component: -[(1)(1) - (1)(0)] = -1",\
+      "k-component: (1)(1) - (0)(0) = 1",\
+      "a \'d7 b = (-1, -1, 1)"\
+    ],\
+    "hint1": "Set up the 3\'d73 determinant with i, j, k in row 1, then a and b in rows 2 and 3",\
+    "hint2": "Remember the j-component picks up a negative sign: j = -[(a\uc0\u8321 b\u8323  - a\u8323 b\u8321 )]"\
+  \},\
+  \{\
+    "id": 51,\
+    "track": "advanced",\
+    "topic": "Vectors",\
+    "problem": "Find the angle in degrees between vectors a = (1, 1, 0) and b = (1, 0, 1).",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "60\'b0",\
+    "acceptedFormats": ["60\'b0", "60", "\uc0\u960 /3"],\
+    "solution": [\
+      "Use the dot product formula: cos \uc0\u952  = (a \'b7 b) / (|a| |b|)",\
+      "Compute a \'b7 b = (1)(1) + (1)(0) + (0)(1) = 1",\
+      "Compute |a| = \uc0\u8730 (1 + 1 + 0) = \u8730 2 and |b| = \u8730 (1 + 0 + 1) = \u8730 2",\
+      "cos \uc0\u952  = 1 / (\u8730 2 \'b7 \u8730 2) = 1/2",\
+      "\uc0\u952  = cos\u8315 \'b9(1/2) = 60\'b0"\
+    ],\
+    "hint1": "Use cos \uc0\u952  = (a \'b7 b) / (|a||b|) \'97 compute the dot product and both magnitudes",\
+    "hint2": "You'll get cos \uc0\u952  = 1/2, which corresponds to a standard angle"\
+  \},\
+  \{\
+    "id": 52,\
+    "track": "advanced",\
+    "topic": "Vectors",\
+    "problem": "Given a = (1, 2, 3) and b = (4, 5, 6), find |a \'d7 b|.",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "3\uc0\u8730 6",\
+    "acceptedFormats": ["3\uc0\u8730 6", "3*sqrt(6)", "\u8730 54", "sqrt(54)", "7.348"],\
+    "solution": [\
+      "Compute a \'d7 b: i(12 - 15) - j(6 - 12) + k(5 - 8) = (-3, 6, -3)",\
+      "Verify: i: (2)(6)-(3)(5)=-3, j: -[(1)(6)-(3)(4)]=6, k: (1)(5)-(2)(4)=-3",\
+      "Find the magnitude: |a \'d7 b| = \uc0\u8730 (9 + 36 + 9) = \u8730 54",\
+      "Simplify: \uc0\u8730 54 = \u8730 (9 \'d7 6) = 3\u8730 6",\
+      "Therefore |a \'d7 b| = 3\uc0\u8730 6"\
+    ],\
+    "hint1": "First compute the cross product vector, then find its magnitude",\
+    "hint2": "After computing a \'d7 b = (-3, 6, -3), evaluate \uc0\u8730 (9 + 36 + 9) and simplify the surd"\
+  \},\
+  \{\
+    "id": 53,\
+    "track": "advanced",\
+    "topic": "Vectors",\
+    "problem": "Find the volume of the parallelepiped with edges a = (1, 1, 0), b = (0, 1, 1), c = (1, 0, 1).",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "2",\
+    "acceptedFormats": ["2"],\
+    "solution": [\
+      "Volume = |a \'b7 (b \'d7 c)| \'97 compute the scalar triple product",\
+      "First find b \'d7 c: i(1-0) - j(0-1) + k(0-1) = (1, 1, -1)",\
+      "Then dot with a: a \'b7 (b \'d7 c) = (1)(1) + (1)(1) + (0)(-1) = 2",\
+      "Volume = |2| = 2",\
+      "The scalar triple product directly gives the parallelepiped volume"\
+    ],\
+    "hint1": "Volume = |a \'b7 (b \'d7 c)| \'97 compute the cross product first, then dot it with a",\
+    "hint2": "b \'d7 c = (1, 1, -1); then take the dot product with a = (1, 1, 0)"\
+  \},\
+  \{\
+    "id": 54,\
+    "track": "advanced",\
+    "topic": "Vectors",\
+    "problem": "Find the distance from point P = (1, 2, 3) to the plane 2x + y - 2z = 5.",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "7/3",\
+    "acceptedFormats": ["7/3", "2.333", "2.33"],\
+    "solution": [\
+      "Use the point-to-plane distance formula: d = |ax\uc0\u8320  + by\u8320  + cz\u8320  - d| / \u8730 (a\'b2 + b\'b2 + c\'b2)",\
+      "Substitute: |2(1) + 1(2) + (-2)(3) - 5| / \uc0\u8730 (4 + 1 + 4)",\
+      "Numerator: |2 + 2 - 6 - 5| = |-7| = 7",\
+      "Denominator: \uc0\u8730 9 = 3",\
+      "Distance = 7/3"\
+    ],\
+    "hint1": "Use d = |ax\uc0\u8320  + by\u8320  + cz\u8320  - d| / \u8730 (a\'b2 + b\'b2 + c\'b2) where (a, b, c) is the plane's normal",\
+    "hint2": "Plug in x\uc0\u8320 =1, y\u8320 =2, z\u8320 =3 \'97 the numerator is |2 + 2 - 6 - 5|"\
+  \},\
+  \{\
+    "id": 55,\
+    "track": "advanced",\
+    "topic": "Complex Numbers",\
+    "problem": "Expand and simplify: (2 + 3i)(1 - 2i).",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "8 - i",\
+    "acceptedFormats": ["8 - i", "8-i", "8 - 1i"],\
+    "solution": [\
+      "Expand using FOIL: (2)(1) + (2)(-2i) + (3i)(1) + (3i)(-2i)",\
+      "= 2 - 4i + 3i - 6i\'b2",\
+      "Recall i\'b2 = -1, so -6i\'b2 = +6",\
+      "Combine real parts: 2 + 6 = 8",\
+      "Combine imaginary parts: -4i + 3i = -i. Answer: 8 - i"\
+    ],\
+    "hint1": "Expand using FOIL, then substitute i\'b2 = -1",\
+    "hint2": "The -6i\'b2 term becomes +6 since i\'b2 = -1 \'97 collect real and imaginary parts separately"\
+  \},\
+  \{\
+    "id": 56,\
+    "track": "advanced",\
+    "topic": "Complex Numbers",\
+    "problem": "Express z = \uc0\u8730 3 + i in polar form r(cos \u952  + i\'b7sin \u952 ).",\
+    "inputType": "expression",\
+    "variables": ["z"],\
+    "answer": "2(cos(\uc0\u960 /6) + i\'b7sin(\u960 /6))",\
+    "acceptedFormats": ["2(cos(\uc0\u960 /6) + i\'b7sin(\u960 /6))", "2(cos(30\'b0) + i\'b7sin(30\'b0))", "2e^(i\u960 /6)", "2 cis(\u960 /6)"],\
+    "solution": [\
+      "Find the modulus: r = |z| = \uc0\u8730 ((\u8730 3)\'b2 + 1\'b2) = \u8730 (3 + 1) = 2",\
+      "Find the argument: \uc0\u952  = arctan(Im/Re) = arctan(1/\u8730 3) = \u960 /6",\
+      "Both parts are positive so z is in the first quadrant \'97 \uc0\u952  = \u960 /6 is correct",\
+      "Write in polar form: z = 2(cos(\uc0\u960 /6) + i\'b7sin(\u960 /6))",\
+      "Verify: 2(\uc0\u8730 3/2 + i\'b71/2) = \u8730 3 + i \u10003 "\
+    ],\
+    "hint1": "Find r = \uc0\u8730 (a\'b2 + b\'b2) and \u952  = arctan(b/a), checking the quadrant",\
+    "hint2": "r = 2 and arctan(1/\uc0\u8730 3) is a standard angle you should recognise"\
+  \},\
+  \{\
+    "id": 57,\
+    "track": "advanced",\
+    "topic": "Complex Numbers",\
+    "problem": "Use De Moivre's Theorem to evaluate (1 + i)\uc0\u8312 .",\
+    "inputType": "single",\
+    "variables": [],\
+    "answer": "16",\
+    "acceptedFormats": ["16"],\
+    "solution": [\
+      "Convert 1 + i to polar form: |1 + i| = \uc0\u8730 2 and arg(1 + i) = \u960 /4",\
+      "So 1 + i = \uc0\u8730 2 \'b7 (cos(\u960 /4) + i\'b7sin(\u960 /4))",\
+      "Apply De Moivre's: (1 + i)\uc0\u8312  = (\u8730 2)\u8312  \'b7 (cos(8\'b7\u960 /4) + i\'b7sin(8\'b7\u960 /4))",\
+      "(\uc0\u8730 2)\u8312  = (2^(1/2))\u8312  = 2\u8308  = 16 and cos(2\u960 ) + i\'b7sin(2\u960 ) = 1",\
+      "Therefore (1 + i)\uc0\u8312  = 16"\
+    ],\
+    "hint1": "Convert 1 + i to polar form first, then apply De Moivre's: (r\'b7cis\uc0\u952 )\u8319  = r\u8319 \'b7cis(n\u952 )",\
+    "hint2": "|1 + i| = \uc0\u8730 2 and arg = \u960 /4; raising to the 8th power makes the angle 2\u960 , which gives 1"\
+  \},\
+  \{\
+    "id": 58,\
+    "track": "advanced",\
+    "topic": "Complex Numbers",\
+    "problem": "Find all cube roots of \uc0\u8722 8.",\
+    "inputType": "multiple",\
+    "variables": ["z"],\
+    "answer": "-2, 1 + i\uc0\u8730 3, 1 - i\u8730 3",\
+    "acceptedFormats": ["-2, 1 + i\uc0\u8730 3, 1 - i\u8730 3", "1 + i\u8730 3, -2, 1 - i\u8730 3", "-2, 1+i\u8730 3, 1-i\u8730 3"],\
+    "solution": [\
+      "Write \uc0\u8722 8 in polar form: \u8722 8 = 8(cos \u960  + i\'b7sin \u960 )",\
+      "Cube roots have modulus 8^(1/3) = 2 and arguments (\uc0\u960  + 2k\u960 )/3 for k = 0, 1, 2",\
+      "k=0: 2(cos(\uc0\u960 /3) + i\'b7sin(\u960 /3)) = 2(1/2 + i\u8730 3/2) = 1 + i\u8730 3",\
+      "k=1: 2(cos(\uc0\u960 ) + i\'b7sin(\u960 )) = \u8722 2",\
+      "k=2: 2(cos(5\uc0\u960 /3) + i\'b7sin(5\u960 /3)) = 2(1/2 \u8722  i\u8730 3/2) = 1 \u8722  i\u8730 3"\
+    ],\
+    "hint1": "Write \uc0\u8722 8 in polar form, then use the nth root formula: modulus = r^(1/n), arguments spaced 2\u960 /n apart",\
+    "hint2": "\uc0\u8722 8 = 8\'b7e^(i\u960 ); the three cube roots have arguments \u960 /3, \u960 , and 5\u960 /3"\
+  \},\
+  \{\
+    "id": 59,\
+    "track": "advanced",\
+    "topic": "Complex Numbers",\
+    "problem": "Solve over \uc0\u8450 : z\'b2 + 2z + 2 = 0.",\
+    "inputType": "multiple",\
+    "variables": ["z"],\
+    "answer": "z = -1 + i, -1 - i",\
+    "acceptedFormats": ["z = -1 + i, -1 - i", "-1 + i, -1 - i", "z = -1 \'b1 i", "-1 \'b1 i"],\
+    "solution": [\
+      "Apply the quadratic formula: z = (\uc0\u8722 b \'b1 \u8730 (b\'b2 \u8722  4ac)) / 2a",\
+      "Substitute a=1, b=2, c=2: z = (\uc0\u8722 2 \'b1 \u8730 (4 \u8722  8)) / 2",\
+      "= (\uc0\u8722 2 \'b1 \u8730 (\u8722 4)) / 2",\
+      "= (\uc0\u8722 2 \'b1 2i) / 2",\
+      "z = \uc0\u8722 1 + i  or  z = \u8722 1 \u8722  i"\
+    ],\
+    "hint1": "The discriminant b\'b2 \uc0\u8722  4ac will be negative \'97 that's expected for complex roots",\
+    "hint2": "b\'b2 \uc0\u8722  4ac = 4 \u8722  8 = \u8722 4, so \u8730 (\u8722 4) = 2i"\
+  \},\
+  \{\
+    "id": 60,\
+    "track": "advanced",\
+    "topic": "Complex Numbers",\
+    "problem": "Find the two square roots of i.",\
+    "inputType": "multiple",\
+    "variables": ["z"],\
+    "answer": "(1 + i)/\uc0\u8730 2, -(1 + i)/\u8730 2",\
+    "acceptedFormats": ["(1+i)/\uc0\u8730 2, -(1+i)/\u8730 2", "(1+i)/\u8730 2 and -(1+i)/\u8730 2", "\u8730 2/2 + i\u8730 2/2, -\u8730 2/2 - i\u8730 2/2"],\
+    "solution": [\
+      "Write i in polar form: i = 1\'b7(cos(\uc0\u960 /2) + i\'b7sin(\u960 /2))",\
+      "Square roots have modulus \uc0\u8730 1 = 1 and arguments (\u960 /2 + 2k\u960 )/2 for k = 0, 1",\
+      "k=0: cos(\uc0\u960 /4) + i\'b7sin(\u960 /4) = (1 + i)/\u8730 2",\
+      "k=1: cos(5\uc0\u960 /4) + i\'b7sin(5\u960 /4) = (\u8722 1 \u8722  i)/\u8730 2 = \u8722 (1 + i)/\u8730 2",\
+      "Verify: ((1+i)/\uc0\u8730 2)\'b2 = (1 + 2i \u8722  1)/2 = 2i/2 = i \u10003 "\
+    ],\
+    "hint1": "Write i in polar form r\'b7e^(i\uc0\u952 ) and use the root formula with n = 2",\
+    "hint2": "i = e^(i\uc0\u960 /2); the two square roots have arguments \u960 /4 and \u960 /4 + \u960  = 5\u960 /4"\
+  \}\
+]}
