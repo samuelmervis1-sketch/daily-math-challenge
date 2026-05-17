@@ -146,9 +146,13 @@
     }
 
     .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
       border-radius: 16px;
       padding: 32px;
       transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
     }
 
     .card:hover {
@@ -301,33 +305,33 @@
   <section class="hero">
     <h1>Practice math. Get better. Every day.</h1>
     <p>10 minutes. Three difficulty levels. Real progress.</p>
-    <button class="btn-primary">Start practicing free</button>
+    <a class="btn-primary" href="puzzle.html?track=standard">Start practicing free</a>
   </section>
 
   <section class="tracks">
     <h2>Choose your track</h2>
     <div class="tracks-grid">
 
-      <div class="card card-standard">
+      <a class="card card-standard" href="puzzle.html?track=standard">
         <div class="card-icon">📗</div>
         <h3>Standard</h3>
         <p>High school level (Year 10–12). Quadratics, trig, functions, basic calculus.</p>
         <div class="card-meta">Solve time: 3–5 minutes</div>
-      </div>
+      </a>
 
-      <div class="card card-advanced">
+      <a class="card card-advanced" href="puzzle.html?track=advanced">
         <div class="card-icon">📙</div>
         <h3>Advanced</h3>
         <p>High school extension level. Complex calculus, 3D geometry, advanced algebra.</p>
         <div class="card-meta">Solve time: 5–8 minutes</div>
-      </div>
+      </a>
 
-      <div class="card card-hard">
+      <a class="card card-hard" href="puzzle.html?track=hard">
         <div class="card-icon">📕</div>
         <h3>Hard</h3>
         <p>University level. Abstract algebra, real analysis, difficult polynomial theory.</p>
         <div class="card-meta">Solve time: 10–15 minutes</div>
-      </div>
+      </a>
 
     </div>
   </section>

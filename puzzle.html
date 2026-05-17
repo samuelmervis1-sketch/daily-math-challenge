@@ -1098,7 +1098,9 @@
           }));
         }
 
-        initTrack('standard', false);
+        const reqTrack = new URLSearchParams(location.search).get('track');
+        const startTrack = ['standard','advanced','hard'].includes(reqTrack) ? reqTrack : 'standard';
+        initTrack(startTrack, false);
       } catch (e) {
         showLoadError(e.message);
       }
