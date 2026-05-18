@@ -34,7 +34,7 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       display: flex;
       align-items: center;
@@ -68,26 +68,91 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: #3498db;
-    }
+    .nav-links a:hover { color: #3498db; }
 
     .nav-icons {
       display: flex;
       gap: 16px;
       font-size: 1.3rem;
       cursor: pointer;
+      align-items: center;
     }
 
-    .nav-icons span {
+    .nav-icons > span {
       transition: transform 0.2s;
     }
 
-    .nav-icons span:hover {
-      transform: scale(1.2);
+    .nav-icons > span:hover { transform: scale(1.2); }
+
+    /* ── ACCOUNT WRAPPER ── */
+    .account-wrapper { position: relative; }
+
+    .account-btn {
+      position: relative;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      transition: transform 0.2s;
+      font-size: 1.3rem;
+      user-select: none;
+    }
+    .account-btn:hover { transform: scale(1.2); }
+
+    .account-dot {
+      display: none;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #27ae60;
+      border: 2px solid #fffef8;
+      position: absolute;
+      top: -1px; right: -2px;
+      flex-shrink: 0;
+    }
+    .account-dot.visible { display: block; }
+
+    .account-dropdown {
+      display: none;
+      position: absolute;
+      right: 0; top: calc(100% + 12px);
+      background: #fffef8;
+      border: 2px solid #b0c4de;
+      border-radius: 14px;
+      padding: 14px;
+      min-width: 210px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      z-index: 150;
+    }
+    .account-dropdown.open { display: block; animation: fadeDropdown 0.18s ease both; }
+    @keyframes fadeDropdown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* HERO */
+    .account-dropdown-email {
+      font-size: 0.78rem;
+      color: #7f8c8d;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #b0c4de;
+      word-break: break-all;
+    }
+
+    .btn-sign-out {
+      width: 100%;
+      padding: 8px 10px;
+      background: transparent;
+      border: 2px dashed #e74c3c;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.88rem;
+      color: #e74c3c;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-sign-out:hover { background: #fff5f5; }
+
+    /* ── HERO ── */
     .hero {
       padding: 80px 40px 80px 100px;
       max-width: 800px;
@@ -128,10 +193,8 @@
       box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
     }
 
-    /* TRACKS SECTION */
-    .tracks {
-      padding: 40px 40px 80px 100px;
-    }
+    /* ── TRACKS SECTION ── */
+    .tracks { padding: 40px 40px 80px 100px; }
 
     .tracks h2 {
       font-size: 1.6rem;
@@ -160,25 +223,11 @@
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
     }
 
-    .card-standard {
-      background-color: #f0fff4;
-      border: 3px dashed #27ae60;
-    }
+    .card-standard { background-color: #f0fff4; border: 3px dashed #27ae60; }
+    .card-advanced { background-color: #fffbf0; border: 3px dashed #f39c12; }
+    .card-hard     { background-color: #fff5f5; border: 3px dashed #e74c3c; }
 
-    .card-advanced {
-      background-color: #fffbf0;
-      border: 3px dashed #f39c12;
-    }
-
-    .card-hard {
-      background-color: #fff5f5;
-      border: 3px dashed #e74c3c;
-    }
-
-    .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
+    .card-icon { font-size: 2.5rem; margin-bottom: 16px; }
 
     .card h3 {
       font-size: 1.3rem;
@@ -199,9 +248,135 @@
       font-style: italic;
     }
 
-    /* RESPONSIVE */
+    /* ── AUTH MODAL ── */
+    .modal-overlay {
+      display: flex;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .modal {
+      background: #fffef8;
+      border-radius: 20px;
+      padding: 28px;
+      width: min(420px, 92vw);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      transform: translateY(18px) scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      font-size: 1.4rem; background: none; border: none;
+      cursor: pointer; color: #7f8c8d; line-height: 1;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .modal-close:hover { color: #2c3e50; transform: rotate(90deg); }
+
+    .auth-heading {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a252f;
+      margin-bottom: 4px;
+    }
+    .auth-sub {
+      font-size: 0.85rem;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .auth-tabs-row {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #b0c4de;
+      margin-bottom: 16px;
+    }
+    .auth-tab-btn {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #7f8c8d;
+      transition: background 0.2s, color 0.2s;
+    }
+    .auth-tab-btn.active { background: #3498db; color: #fff; font-weight: 700; }
+    .auth-err {
+      min-height: 18px;
+      font-size: 0.85rem;
+      color: #e74c3c;
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .auth-field {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      border: 2px solid #b0c4de;
+      border-radius: 10px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.97rem;
+      color: #2c3e50;
+      background: #fffef8;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 10px;
+    }
+    .auth-field:focus { border-color: #3498db; }
+    .btn-auth-go {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-bottom: 10px;
+    }
+    .btn-auth-go:hover { background: #2176ae; transform: translateY(-2px); }
+    .btn-auth-go:disabled { background: #95a5a6; cursor: not-allowed; transform: none; }
+    .auth-or { text-align: center; font-size: 0.8rem; color: #bdc3c7; margin-bottom: 10px; }
+    .btn-auth-skip {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      background: transparent;
+      border: none;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.88rem;
+      color: #7f8c8d;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .btn-auth-skip:hover { color: #2c3e50; }
+    .auth-confirm-box { text-align: center; padding: 12px 0; }
+    .auth-confirm-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .auth-confirm-title { font-size: 1.1rem; font-weight: 700; color: #27ae60; margin-bottom: 8px; }
+    .auth-confirm-msg { font-size: 0.85rem; color: #7f8c8d; line-height: 1.55; }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      /* Navigation */
       nav {
         padding: 12px 16px;
         flex-wrap: nowrap;
@@ -210,7 +385,6 @@
       }
 
       .nav-logo { font-size: 1rem; }
-
       .nav-links { display: none; }
 
       .nav-icons {
@@ -218,7 +392,7 @@
         font-size: 1.4rem;
       }
 
-      .nav-icons span {
+      .nav-icons > span {
         min-width: 44px;
         min-height: 44px;
         display: flex;
@@ -226,22 +400,16 @@
         justify-content: center;
       }
 
-      /* Hero */
+      .account-btn { font-size: 1.4rem; min-width: 44px; min-height: 44px; justify-content: center; }
+      .account-dropdown { right: -8px; min-width: 190px; }
+
       .hero {
         padding: 48px 20px 40px 20px;
         max-width: 100%;
       }
 
-      .hero h1 {
-        font-size: 2rem;
-        line-height: 1.25;
-        margin-bottom: 16px;
-      }
-
-      .hero p {
-        font-size: 1.05rem;
-        margin-bottom: 28px;
-      }
+      .hero h1 { font-size: 2rem; line-height: 1.25; margin-bottom: 16px; }
+      .hero p  { font-size: 1.05rem; margin-bottom: 28px; }
 
       .btn-primary {
         display: block;
@@ -252,36 +420,35 @@
         font-size: 1rem;
       }
 
-      /* Tracks */
-      .tracks {
-        padding: 32px 20px 60px 20px;
-      }
-
-      .tracks h2 {
-        font-size: 1.3rem;
-        margin-bottom: 20px;
-      }
-
-      .tracks-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .card {
-        padding: 24px 20px;
-      }
-
+      .tracks { padding: 32px 20px 60px 20px; }
+      .tracks h2 { font-size: 1.3rem; margin-bottom: 20px; }
+      .tracks-grid { grid-template-columns: 1fr; gap: 16px; }
+      .card { padding: 24px 20px; }
       .card-icon { font-size: 2rem; margin-bottom: 12px; }
       .card h3   { font-size: 1.15rem; }
       .card p    { font-size: 0.9rem; }
+
+      .modal {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 24px 20px 28px;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        margin: 0;
+        transform: translateY(100%);
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .modal-overlay.open .modal { transform: translateY(0); }
+      .modal-overlay.open { align-items: flex-end; }
+      .modal-close { top: 14px; right: 16px; font-size: 1.6rem; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
     }
 
-    /* Remove hover lifts on touch devices */
     @media (hover: none) {
       .btn-primary:hover { transform: none; background-color: #3498db; box-shadow: 0 4px 14px rgba(52,152,219,0.4); }
       .card:hover        { transform: none; box-shadow: none; }
-      .nav-icons span:hover { transform: none; }
-
+      .nav-icons > span:hover { transform: none; }
+      .account-btn:hover  { transform: none; }
       .btn-primary:active { opacity: 0.85; }
       .card:active        { opacity: 0.9; }
     }
@@ -293,11 +460,19 @@
     <div class="nav-logo">Daily Math Challenge</div>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
-      <li><a href="#">Practice</a></li>
+      <li><a href="puzzle.html">Practice</a></li>
       <li><a href="#">Premium</a></li>
     </ul>
     <div class="nav-icons">
-      <span title="Account">👤</span>
+      <!-- Account icon — opens auth modal (guest) or dropdown (logged in) -->
+      <div class="account-wrapper" id="account-wrapper">
+        <span class="account-btn" id="account-btn" title="Account"
+          >👤<span class="account-dot" id="account-dot"></span></span>
+        <div class="account-dropdown" id="account-dropdown">
+          <div class="account-dropdown-email" id="account-dropdown-email"></div>
+          <button class="btn-sign-out" id="btn-sign-out">Sign out</button>
+        </div>
+      </div>
       <span title="Toggle theme">🌙</span>
     </div>
   </nav>
@@ -335,6 +510,201 @@
 
     </div>
   </section>
+
+  <!-- ── AUTH MODAL ── -->
+  <div class="modal-overlay" id="auth-overlay">
+    <div class="modal">
+      <button class="modal-close" id="auth-modal-close">✕</button>
+
+      <!-- Form view -->
+      <div id="auth-form-view">
+        <div class="auth-heading">👋 Welcome!</div>
+        <div class="auth-sub">Sign in to save your streaks and access your stats from any device.</div>
+        <div class="auth-tabs-row">
+          <button class="auth-tab-btn active" data-auth-tab="login">Login</button>
+          <button class="auth-tab-btn"        data-auth-tab="signup">Sign Up</button>
+        </div>
+        <div class="auth-err" id="auth-err"></div>
+        <input class="auth-field" type="email"    id="auth-email"    placeholder="Email address" autocomplete="email"            inputmode="email">
+        <input class="auth-field" type="password" id="auth-password" placeholder="Password"      autocomplete="current-password">
+        <button class="btn-auth-go" id="btn-auth-go">Login</button>
+        <div class="auth-or">— or —</div>
+        <button class="btn-auth-skip" id="btn-auth-skip">Continue without account</button>
+      </div>
+
+      <!-- Confirmation view (email signup) -->
+      <div id="auth-confirm-view" style="display:none">
+        <div class="auth-confirm-box">
+          <div class="auth-confirm-icon">📬</div>
+          <div class="auth-confirm-title">Check your inbox!</div>
+          <div class="auth-confirm-msg" id="auth-confirm-msg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    /* ──────────────────────────────────────────────
+       SUPABASE CONFIG
+       Replace the placeholder below with your actual
+       anon/public key from Supabase → Settings → API
+    ────────────────────────────────────────────── */
+    const SUPABASE_URL  = 'https://whfrmxxttbpojkdbkehzf.supabase.co';
+    const SUPABASE_ANON = 'sb_publishable_jIC7Utsu26q2sNzzh7WxJQ_iFjEtvG7';
+
+    let _sb = null;
+    try {
+      if (typeof supabase !== 'undefined') {
+        _sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+      }
+    } catch(e) {}
+
+    let currentUser = null;
+    let _authMode   = 'login';
+
+    /* ── NAV AUTH STATE ── */
+    function updateNavAuth(user) {
+      currentUser = user;
+      document.getElementById('account-dot').classList.toggle('visible', !!user);
+      document.getElementById('account-dropdown-email').textContent = user ? user.email : '';
+    }
+
+    /* ── AUTH MODAL HELPERS ── */
+    function openAuthModal() {
+      _authMode = 'login';
+      document.querySelectorAll('.auth-tab-btn').forEach(t =>
+        t.classList.toggle('active', t.dataset.authTab === 'login'));
+      document.getElementById('btn-auth-go').textContent = 'Login';
+      document.getElementById('btn-auth-go').disabled    = false;
+      document.getElementById('auth-err').textContent    = '';
+      document.getElementById('auth-email').value        = '';
+      document.getElementById('auth-password').value     = '';
+      document.getElementById('auth-form-view').style.display    = '';
+      document.getElementById('auth-confirm-view').style.display = 'none';
+      document.getElementById('auth-overlay').classList.add('open');
+      setTimeout(() => document.getElementById('auth-email').focus(), 300);
+    }
+
+    function closeAuthModal() { document.getElementById('auth-overlay').classList.remove('open'); }
+    function closeDropdown()  { document.getElementById('account-dropdown').classList.remove('open'); }
+
+    function friendlyAuthError(msg) {
+      if (msg.includes('Invalid login credentials')) return '❌ Incorrect email or password.';
+      if (msg.includes('Email not confirmed'))       return '📬 Please confirm your email first.';
+      if (msg.includes('User already registered'))   return '⚠️ An account with this email already exists.';
+      if (msg.includes('Password should be'))        return '⚠️ Password must be at least 6 characters.';
+      return msg;
+    }
+
+    /* ── AUTH EVENT LISTENERS ── */
+    document.getElementById('auth-modal-close').addEventListener('click', closeAuthModal);
+    document.getElementById('auth-overlay').addEventListener('click', e => {
+      if (e.target === document.getElementById('auth-overlay')) closeAuthModal();
+    });
+    document.getElementById('btn-auth-skip').addEventListener('click', closeAuthModal);
+
+    // Tab switching
+    document.querySelectorAll('.auth-tab-btn').forEach(tab => {
+      tab.addEventListener('click', () => {
+        _authMode = tab.dataset.authTab;
+        document.querySelectorAll('.auth-tab-btn').forEach(t =>
+          t.classList.toggle('active', t.dataset.authTab === _authMode));
+        document.getElementById('btn-auth-go').textContent =
+          _authMode === 'login' ? 'Login' : 'Create Account';
+        document.getElementById('auth-password').autocomplete =
+          _authMode === 'login' ? 'current-password' : 'new-password';
+        document.getElementById('auth-err').textContent = '';
+      });
+    });
+
+    // Keyboard: Enter advances field or submits
+    document.getElementById('auth-email').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('auth-password').focus();
+    });
+    document.getElementById('auth-password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('btn-auth-go').click();
+    });
+
+    // Submit
+    document.getElementById('btn-auth-go').addEventListener('click', async () => {
+      if (!_sb) { document.getElementById('auth-err').textContent = 'Auth unavailable — try refreshing.'; return; }
+      const email    = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value;
+      const errEl    = document.getElementById('auth-err');
+      const btn      = document.getElementById('btn-auth-go');
+
+      errEl.textContent = '';
+      if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; return; }
+      if (_authMode === 'signup' && password.length < 6) {
+        errEl.textContent = '⚠️ Password must be at least 6 characters.'; return;
+      }
+
+      btn.disabled    = true;
+      btn.textContent = _authMode === 'login' ? 'Logging in…' : 'Creating account…';
+
+      try {
+        const result = _authMode === 'login'
+          ? await _sb.auth.signInWithPassword({ email, password })
+          : await _sb.auth.signUp({ email, password });
+
+        if (result.error) {
+          errEl.textContent = friendlyAuthError(result.error.message);
+          btn.disabled    = false;
+          btn.textContent = _authMode === 'login' ? 'Login' : 'Create Account';
+        } else if (_authMode === 'signup' && !result.data.session) {
+          // Email confirmation required — show confirmation message
+          document.getElementById('auth-confirm-msg').textContent =
+            `We sent a confirmation link to ${email}. Click it to activate your account, then come back to log in.`;
+          document.getElementById('auth-form-view').style.display    = 'none';
+          document.getElementById('auth-confirm-view').style.display = '';
+        } else {
+          closeAuthModal();
+        }
+      } catch(e) {
+        errEl.textContent = 'Something went wrong. Please try again.';
+        btn.disabled    = false;
+        btn.textContent = _authMode === 'login' ? 'Login' : 'Create Account';
+      }
+    });
+
+    // Account button — guest → auth modal, logged in → dropdown
+    document.getElementById('account-btn').addEventListener('click', () => {
+      if (currentUser) {
+        document.getElementById('account-dropdown').classList.toggle('open');
+      } else {
+        openAuthModal();
+      }
+    });
+
+    // Sign out
+    document.getElementById('btn-sign-out').addEventListener('click', async () => {
+      if (_sb) await _sb.auth.signOut();
+      closeDropdown();
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', e => {
+      const w = document.getElementById('account-wrapper');
+      if (w && !w.contains(e.target)) closeDropdown();
+    });
+
+    // Escape key closes any open overlay
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeAuthModal(); closeDropdown(); }
+    });
+
+    /* ── SUPABASE AUTH STATE ── */
+    if (_sb) {
+      _sb.auth.onAuthStateChange((event, session) => {
+        updateNavAuth(session?.user || null);
+        if (event === 'SIGNED_OUT') closeDropdown();
+      });
+      // Restore session on page load
+      _sb.auth.getSession().then(({ data: { session } }) =>
+        updateNavAuth(session?.user || null));
+    }
+  </script>
 
 </body>
 </html>

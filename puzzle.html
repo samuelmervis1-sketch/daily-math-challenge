@@ -35,9 +35,75 @@
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { text-decoration: none; color: #2c3e50; font-size: 1rem; transition: color 0.2s; }
     .nav-links a:hover { color: #3498db; }
-    .nav-icons { display: flex; gap: 16px; font-size: 1.3rem; cursor: pointer; }
-    .nav-icons span { transition: transform 0.2s; }
-    .nav-icons span:hover { transform: scale(1.2); }
+    .nav-icons { display: flex; gap: 16px; font-size: 1.3rem; cursor: pointer; align-items: center; }
+    .nav-icons > span { transition: transform 0.2s; }
+    .nav-icons > span:hover { transform: scale(1.2); }
+
+    /* ── ACCOUNT WRAPPER ── */
+    .account-wrapper { position: relative; }
+
+    .account-btn {
+      position: relative;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      transition: transform 0.2s;
+      font-size: 1.3rem;
+      user-select: none;
+    }
+    .account-btn:hover { transform: scale(1.2); }
+
+    .account-dot {
+      display: none;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #27ae60;
+      border: 2px solid #fffef8;
+      position: absolute;
+      top: -1px; right: -2px;
+      flex-shrink: 0;
+    }
+    .account-dot.visible { display: block; }
+
+    .account-dropdown {
+      display: none;
+      position: absolute;
+      right: 0; top: calc(100% + 12px);
+      background: #fffef8;
+      border: 2px solid #e3e0d1;
+      border-radius: 14px;
+      padding: 14px;
+      min-width: 210px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      z-index: 150;
+    }
+    .account-dropdown.open { display: block; animation: fadeDropdown 0.18s ease both; }
+    @keyframes fadeDropdown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .account-dropdown-email {
+      font-size: 0.78rem;
+      color: #7f8c8d;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e3e0d1;
+      word-break: break-all;
+    }
+    .btn-sign-out {
+      width: 100%;
+      padding: 8px 10px;
+      background: transparent;
+      border: 2px dashed #e74c3c;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.88rem;
+      color: #e74c3c;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-sign-out:hover { background: #fff5f5; }
 
     /* ── MAIN ── */
     main { padding: 40px 40px 80px 0; }
@@ -90,9 +156,9 @@
     .puzzle-container.standard { border-color: #27ae60; background: rgba(232,248,245,0.4); }
     .puzzle-container.advanced { border-color: #f39c12; background: rgba(254,245,231,0.4); }
     .puzzle-container.hard     { border-color: #e74c3c; background: rgba(250,219,216,0.4); }
-    .puzzle-label { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .puzzle-label       { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.08em; }
     .puzzle-instruction { font-size: 18px; text-align: center; color: #7f8c8d; font-weight: 600; margin-bottom: 16px; }
-    .puzzle-equation { font-family: Georgia, 'Times New Roman', serif; font-size: 40px; text-align: center; color: #1a252f; line-height: 1.4; }
+    .puzzle-equation    { font-family: Georgia, 'Times New Roman', serif; font-size: 40px; text-align: center; color: #1a252f; line-height: 1.4; }
     .puzzle-equation.long { font-size: 22px; font-family: 'Comic Sans MS', 'Comic Sans', cursive; line-height: 1.6; }
 
     /* ── INPUT ── */
@@ -274,6 +340,84 @@
     }
     .btn-share:hover { background: #2176ae; transform: translateY(-2px); }
 
+    /* ── AUTH MODAL ── */
+    #auth-overlay { z-index: 250; }
+    #auth-overlay .modal { width: min(420px, 92vw); max-height: none; overflow-y: visible; }
+
+    .auth-heading { font-size: 1.3rem; font-weight: 700; color: #1a252f; margin-bottom: 4px; }
+    .auth-sub { font-size: 0.85rem; color: #7f8c8d; margin-bottom: 20px; line-height: 1.5; }
+    .auth-tabs-row {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #e3e0d1;
+      margin-bottom: 16px;
+    }
+    .auth-tab-btn {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #7f8c8d;
+      transition: background 0.2s, color 0.2s;
+    }
+    .auth-tab-btn.active { background: #3498db; color: #fff; font-weight: 700; }
+    .auth-err { min-height: 18px; font-size: 0.85rem; color: #e74c3c; margin-bottom: 10px; text-align: center; line-height: 1.4; }
+    .auth-field {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      border: 2px solid #e3e0d1;
+      border-radius: 10px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.97rem;
+      color: #2c3e50;
+      background: #fffef8;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 10px;
+    }
+    .auth-field:focus { border-color: #3498db; }
+    .btn-auth-go {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-bottom: 10px;
+    }
+    .btn-auth-go:hover { background: #2176ae; transform: translateY(-2px); }
+    .btn-auth-go:disabled { background: #95a5a6; cursor: not-allowed; transform: none; }
+    .auth-or { text-align: center; font-size: 0.8rem; color: #bdc3c7; margin-bottom: 10px; }
+    .btn-auth-skip {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      background: transparent;
+      border: none;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.88rem;
+      color: #7f8c8d;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .btn-auth-skip:hover { color: #2c3e50; }
+    .auth-confirm-box { text-align: center; padding: 12px 0; }
+    .auth-confirm-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .auth-confirm-title { font-size: 1.1rem; font-weight: 700; color: #27ae60; margin-bottom: 8px; }
+    .auth-confirm-msg { font-size: 0.85rem; color: #7f8c8d; line-height: 1.55; }
+
     /* ── CONFETTI CANVAS ── */
     #confetti-canvas {
       position: fixed; top: 0; left: 0;
@@ -361,7 +505,10 @@
       .nav-logo { font-size: 1rem; }
       .nav-links { display: none; }
       .nav-icons { gap: 12px; font-size: 1.4rem; }
-      .nav-icons span { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+      .nav-icons > span { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+      .account-btn { font-size: 1.4rem; min-width: 44px; min-height: 44px; justify-content: center; }
+      .account-dropdown { right: -8px; min-width: 190px; }
+
       main { padding: 24px 0 60px 0; }
       #stale-banner { margin: 0 16px 12px 16px; }
       .track-tabs { padding: 0 16px; margin-bottom: 24px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 10px; }
@@ -402,12 +549,14 @@
       .stat-value { font-size: 1.4rem; }
       .stat-label { font-size: 0.7rem; }
       .btn-share { padding: 16px; min-height: 50px; font-size: 1rem; }
+      #auth-overlay .modal { min-height: auto; }
     }
 
     /* ── TOUCH DEVICES ── */
     @media (hover: none) {
       .track-tab:hover, .btn-submit:hover, .hint-btn:hover,
-      .btn-tomorrow:hover, .btn-share:hover, .nav-icons span:hover { transform: none; box-shadow: none; }
+      .btn-tomorrow:hover, .btn-share:hover, .nav-icons > span:hover,
+      .account-btn:hover { transform: none; box-shadow: none; }
       .btn-submit:hover { background: #3498db; }
       .btn-share:hover  { background: #3498db; }
     }
@@ -448,7 +597,15 @@
     </ul>
     <div class="nav-icons">
       <span id="stats-icon" title="Stats">📊</span>
-      <span title="Account">👤</span>
+      <!-- Account — opens auth modal (guest) or dropdown (logged in) -->
+      <div class="account-wrapper" id="account-wrapper">
+        <span class="account-btn" id="account-btn" title="Account"
+          >👤<span class="account-dot" id="account-dot"></span></span>
+        <div class="account-dropdown" id="account-dropdown">
+          <div class="account-dropdown-email" id="account-dropdown-email"></div>
+          <button class="btn-sign-out" id="btn-sign-out">Sign out</button>
+        </div>
+      </div>
       <span title="Toggle theme">🌙</span>
     </div>
   </nav>
@@ -494,6 +651,7 @@
     </div>
   </main>
 
+  <!-- Stats modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal" id="stats-modal">
       <button class="modal-close" id="modal-close">✕</button>
@@ -503,9 +661,76 @@
     </div>
   </div>
 
+  <!-- Auth modal -->
+  <div class="modal-overlay" id="auth-overlay">
+    <div class="modal">
+      <button class="modal-close" id="auth-modal-close">✕</button>
+
+      <!-- Form view -->
+      <div id="auth-form-view">
+        <div class="auth-heading">👋 Welcome!</div>
+        <div class="auth-sub">Sign in to save your streaks and access your stats from any device.</div>
+        <div class="auth-tabs-row">
+          <button class="auth-tab-btn active" data-auth-tab="login">Login</button>
+          <button class="auth-tab-btn"        data-auth-tab="signup">Sign Up</button>
+        </div>
+        <div class="auth-err" id="auth-err"></div>
+        <input class="auth-field" type="email"    id="auth-email"    placeholder="Email address" autocomplete="email"            inputmode="email">
+        <input class="auth-field" type="password" id="auth-password" placeholder="Password"      autocomplete="current-password">
+        <button class="btn-auth-go" id="btn-auth-go">Login</button>
+        <div class="auth-or">— or —</div>
+        <button class="btn-auth-skip" id="btn-auth-skip">Continue without account</button>
+      </div>
+
+      <!-- Email confirmation view -->
+      <div id="auth-confirm-view" style="display:none">
+        <div class="auth-confirm-box">
+          <div class="auth-confirm-icon">📬</div>
+          <div class="auth-confirm-title">Check your inbox!</div>
+          <div class="auth-confirm-msg" id="auth-confirm-msg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     /* ── MOTION PREFERENCE ── */
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ──────────────────────────────────────────────
+       SUPABASE CONFIG
+       Replace the placeholder below with your actual
+       anon/public key from: Supabase → Settings → API
+
+       Expected user_stats table schema:
+         user_id              uuid  (FK → auth.users, NOT NULL)
+         track                text  (standard | advanced | hard)
+         current_streak       int   DEFAULT 0
+         longest_streak       int   DEFAULT 0
+         total_solved         int   DEFAULT 0
+         total_guesses        int   DEFAULT 0
+         total_solved_for_avg int   DEFAULT 0
+         last_played_date     text
+         todays_solved        bool  DEFAULT false
+         updated_at           timestamptz DEFAULT now()
+         UNIQUE(user_id, track)
+
+       Enable Row Level Security and add policy:
+         FOR ALL USING (auth.uid() = user_id)
+    ────────────────────────────────────────────── */
+    const SUPABASE_URL  = 'https://whfrmxxttbpojkdbkehzf.supabase.co';
+    const SUPABASE_ANON = 'sb_publishable_jIC7Utsu26q2sNzzh7WxJQ_iFjEtvG7';
+
+    let _sb = null;
+    try {
+      if (typeof supabase !== 'undefined') {
+        _sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+      }
+    } catch(e) {}
+
+    let currentUser = null;
+    let _authMode   = 'login';
 
     /* ── GOOGLE SHEETS CONFIG ── */
     const SHEET_URL   = 'https://docs.google.com/spreadsheets/d/1L50xh8WpZHSAN1wqDDoMj_9cnqXmLfDhctiaEgW85M4/export?format=csv&gid=0';
@@ -646,12 +871,10 @@
       const userNorm = raw.trim().toLowerCase().replace(/\s+/g, ' ');
       const accepted = [puzzle.answer, ...(puzzle.acceptedFormats || [])].filter(Boolean);
 
-      // Exact string match (case-insensitive, normalised whitespace)
       for (const fmt of accepted) {
         if (userNorm === fmt.trim().toLowerCase()) return true;
       }
 
-      // Numeric tolerance ±0.01
       const uVal = parseFloat(raw.replace(/[^0-9.\-]/g, ''));
       if (!isNaN(uVal)) {
         for (const fmt of accepted) {
@@ -663,7 +886,7 @@
       return false;
     }
 
-    /* ── STATS ── */
+    /* ── LOCAL STATS ── */
     function defaultStats() {
       return { currentStreak:0, longestStreak:0, totalSolved:0, totalGuesses:0, totalSolvedForAvg:0, lastPlayedDate:null, todaysSolved:false };
     }
@@ -671,7 +894,10 @@
       try { const r = localStorage.getItem(`dmc_stats_${track}`); return r ? Object.assign(defaultStats(), JSON.parse(r)) : defaultStats(); }
       catch { return defaultStats(); }
     }
-    function saveStats(track, stats) { localStorage.setItem(`dmc_stats_${track}`, JSON.stringify(stats)); }
+    function saveStats(track, stats) {
+      localStorage.setItem(`dmc_stats_${track}`, JSON.stringify(stats));
+      pushCloudStats(track, stats); // fire-and-forget cloud sync (no-op when not logged in)
+    }
 
     function recordSolve(track, guessesUsed) {
       const today = sydneyDateString();
@@ -705,6 +931,92 @@
     }
     function avgGuesses(stats) {
       return stats.totalSolvedForAvg ? (stats.totalGuesses/stats.totalSolvedForAvg).toFixed(1) : '—';
+    }
+
+    /* ── CLOUD STATS ── */
+
+    // Push local stats to Supabase after every solve/failure
+    async function pushCloudStats(track, stats) {
+      if (!_sb || !currentUser) return;
+      try {
+        await _sb.from('user_stats').upsert({
+          user_id:              currentUser.id,
+          track,
+          current_streak:       stats.currentStreak,
+          longest_streak:       stats.longestStreak,
+          total_solved:         stats.totalSolved,
+          total_guesses:        stats.totalGuesses,
+          total_solved_for_avg: stats.totalSolvedForAvg,
+          last_played_date:     stats.lastPlayedDate,
+          todays_solved:        stats.todaysSolved,
+          updated_at:           new Date().toISOString()
+        }, { onConflict: 'user_id,track' });
+      } catch(_) { /* silent — localStorage is source of truth */ }
+    }
+
+    // Pull cloud stats and merge into localStorage on login
+    async function fetchAndMergeCloudStats() {
+      if (!_sb || !currentUser) return;
+      try {
+        const { data } = await _sb.from('user_stats').select('*').eq('user_id', currentUser.id);
+        if (!data?.length) return;
+        const today = sydneyDateString();
+        data.forEach(row => {
+          const t = row.track;
+          if (!['standard','advanced','hard'].includes(t)) return;
+          const local     = loadStats(t);
+          const cloudDate = row.last_played_date || '';
+          const localDate = local.lastPlayedDate || '';
+          // If cloud is more recent, trust its streak (cross-device)
+          const cloudNewer = cloudDate > localDate;
+          const merged = {
+            currentStreak:     cloudNewer
+              ? (row.current_streak || 0)
+              : Math.max(local.currentStreak || 0, row.current_streak || 0),
+            longestStreak:     Math.max(local.longestStreak || 0, row.longest_streak || 0),
+            totalSolved:       Math.max(local.totalSolved || 0, row.total_solved || 0),
+            totalGuesses:      Math.max(local.totalGuesses || 0, row.total_guesses || 0),
+            totalSolvedForAvg: Math.max(local.totalSolvedForAvg || 0, row.total_solved_for_avg || 0),
+            lastPlayedDate:    cloudNewer ? cloudDate : (localDate || null),
+            todaysSolved:      local.todaysSolved || (!!row.todays_solved && cloudDate === today),
+          };
+          localStorage.setItem(`dmc_stats_${t}`, JSON.stringify(merged));
+        });
+      } catch(_) { /* silent */ }
+    }
+
+    /* ── NAV AUTH STATE ── */
+    function updateNavAuth(user) {
+      currentUser = user;
+      document.getElementById('account-dot').classList.toggle('visible', !!user);
+      document.getElementById('account-dropdown-email').textContent = user ? user.email : '';
+    }
+
+    /* ── AUTH MODAL HELPERS ── */
+    function openAuthModal() {
+      _authMode = 'login';
+      document.querySelectorAll('.auth-tab-btn').forEach(t =>
+        t.classList.toggle('active', t.dataset.authTab === 'login'));
+      document.getElementById('btn-auth-go').textContent = 'Login';
+      document.getElementById('btn-auth-go').disabled    = false;
+      document.getElementById('auth-err').textContent    = '';
+      document.getElementById('auth-email').value        = '';
+      document.getElementById('auth-password').value     = '';
+      document.getElementById('auth-form-view').style.display    = '';
+      document.getElementById('auth-confirm-view').style.display = 'none';
+      document.getElementById('auth-overlay').classList.add('open');
+      setTimeout(() => document.getElementById('auth-email').focus(), 300);
+    }
+
+    function closeAuthModal() { document.getElementById('auth-overlay').classList.remove('open'); }
+    function closeDropdown()  { document.getElementById('account-dropdown').classList.remove('open'); }
+
+    function friendlyAuthError(msg) {
+      if (msg.includes('Invalid login credentials')) return '❌ Incorrect email or password.';
+      if (msg.includes('Email not confirmed'))       return '📬 Please confirm your email first.';
+      if (msg.includes('User already registered'))   return '⚠️ An account with this email already exists.';
+      if (msg.includes('Password should be'))        return '⚠️ Password must be at least 6 characters.';
+      return msg;
     }
 
     /* ── DOM ── */
@@ -887,7 +1199,6 @@
       puzzleBox.className = `puzzle-container ${track}`;
       labelEl.textContent = puzzle.label;
 
-      // Split "Verb: math expression" into instruction and equation
       const colonIdx  = puzzle.problem.indexOf(': ');
       const instr     = colonIdx > -1 ? puzzle.problem.slice(0, colonIdx + 1) : '';
       const eqn       = colonIdx > -1 ? puzzle.problem.slice(colonIdx + 2) : puzzle.problem;
@@ -1038,7 +1349,7 @@
     modalOverlay.addEventListener('click', e => { if (e.target===modalOverlay) closeModal(); });
     document.getElementById('btn-share').addEventListener('click', closeModal);
 
-    /* ── EVENT LISTENERS ── */
+    /* ── TRACK / GAME EVENT LISTENERS ── */
     tabs.forEach(tab => tab.addEventListener('click', () => {
       pressBtn(tab);
       initTrack(tab.dataset.track, true);
@@ -1057,7 +1368,119 @@
       });
     });
 
-    btnTomorrow.addEventListener('click', () => window.scrollTo({ top:0, behavior: reduceMotion?'auto':'smooth' }));
+    btnTomorrow.addEventListener('click', () =>
+      window.scrollTo({ top:0, behavior: reduceMotion?'auto':'smooth' }));
+
+    /* ── AUTH EVENT LISTENERS ── */
+    document.getElementById('auth-modal-close').addEventListener('click', closeAuthModal);
+    document.getElementById('auth-overlay').addEventListener('click', e => {
+      if (e.target === document.getElementById('auth-overlay')) closeAuthModal();
+    });
+    document.getElementById('btn-auth-skip').addEventListener('click', closeAuthModal);
+
+    // Tab switching
+    document.querySelectorAll('.auth-tab-btn').forEach(tab => {
+      tab.addEventListener('click', () => {
+        _authMode = tab.dataset.authTab;
+        document.querySelectorAll('.auth-tab-btn').forEach(t =>
+          t.classList.toggle('active', t.dataset.authTab === _authMode));
+        document.getElementById('btn-auth-go').textContent =
+          _authMode === 'login' ? 'Login' : 'Create Account';
+        document.getElementById('auth-password').autocomplete =
+          _authMode === 'login' ? 'current-password' : 'new-password';
+        document.getElementById('auth-err').textContent = '';
+      });
+    });
+
+    // Keyboard: Enter advances / submits
+    document.getElementById('auth-email').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('auth-password').focus();
+    });
+    document.getElementById('auth-password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('btn-auth-go').click();
+    });
+
+    // Auth submit
+    document.getElementById('btn-auth-go').addEventListener('click', async () => {
+      if (!_sb) { document.getElementById('auth-err').textContent = 'Auth unavailable — try refreshing.'; return; }
+      const email    = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value;
+      const errEl    = document.getElementById('auth-err');
+      const btn      = document.getElementById('btn-auth-go');
+
+      errEl.textContent = '';
+      if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; return; }
+      if (_authMode === 'signup' && password.length < 6) {
+        errEl.textContent = '⚠️ Password must be at least 6 characters.'; return;
+      }
+
+      btn.disabled    = true;
+      btn.textContent = _authMode === 'login' ? 'Logging in…' : 'Creating account…';
+
+      try {
+        const result = _authMode === 'login'
+          ? await _sb.auth.signInWithPassword({ email, password })
+          : await _sb.auth.signUp({ email, password });
+
+        if (result.error) {
+          errEl.textContent = friendlyAuthError(result.error.message);
+          btn.disabled    = false;
+          btn.textContent = _authMode === 'login' ? 'Login' : 'Create Account';
+        } else if (_authMode === 'signup' && !result.data.session) {
+          // Email confirmation required
+          document.getElementById('auth-confirm-msg').textContent =
+            `We sent a confirmation link to ${email}. Click it to activate your account, then come back to log in.`;
+          document.getElementById('auth-form-view').style.display    = 'none';
+          document.getElementById('auth-confirm-view').style.display = '';
+        } else {
+          closeAuthModal();
+        }
+      } catch(e) {
+        errEl.textContent = 'Something went wrong. Please try again.';
+        btn.disabled    = false;
+        btn.textContent = _authMode === 'login' ? 'Login' : 'Create Account';
+      }
+    });
+
+    // Account button — guest → auth modal, logged in → toggle dropdown
+    document.getElementById('account-btn').addEventListener('click', () => {
+      if (currentUser) {
+        document.getElementById('account-dropdown').classList.toggle('open');
+      } else {
+        openAuthModal();
+      }
+    });
+
+    // Sign out
+    document.getElementById('btn-sign-out').addEventListener('click', async () => {
+      if (_sb) await _sb.auth.signOut();
+      closeDropdown();
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', e => {
+      const w = document.getElementById('account-wrapper');
+      if (w && !w.contains(e.target)) closeDropdown();
+    });
+
+    // Escape closes any open overlay
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeAuthModal(); closeDropdown(); closeModal(); }
+    });
+
+    /* ── SUPABASE AUTH LISTENER ── */
+    // Handles new logins while on the page (e.g. user opens modal and signs in)
+    if (_sb) {
+      _sb.auth.onAuthStateChange(async (event, session) => {
+        updateNavAuth(session?.user || null);
+        if (event === 'SIGNED_IN') {
+          // Merge cloud stats then refresh current track display
+          await fetchAndMergeCloudStats();
+          initTrack(currentTrack, false);
+        }
+        if (event === 'SIGNED_OUT') closeDropdown();
+      });
+    }
 
     /* ── BOOT ── */
     function showLoadError(msg) {
@@ -1082,6 +1505,13 @@
       resetLoadUI();
 
       try {
+        // Restore auth session and pre-merge cloud stats before first render
+        if (_sb) {
+          const { data: { session } } = await _sb.auth.getSession();
+          updateNavAuth(session?.user || null);
+          if (session?.user) await fetchAndMergeCloudStats();
+        }
+
         const result = await loadPuzzles();
         setupDailyPuzzles(result.puzzles);
 
@@ -1098,7 +1528,7 @@
           }));
         }
 
-        const reqTrack = new URLSearchParams(location.search).get('track');
+        const reqTrack   = new URLSearchParams(location.search).get('track');
         const startTrack = ['standard','advanced','hard'].includes(reqTrack) ? reqTrack : 'standard';
         initTrack(startTrack, false);
       } catch (e) {
